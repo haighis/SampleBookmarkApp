@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="bookmark" type="Bookmark"/>
+
+  <xs:complexType name="Bookmark">
+    <xs:sequence>
+   		<xs:element name="url" type="xs:string"/>
+	  <xs:element name="title" type="xs:string"/>
+	  <xs:element name="description" type="xs:string"/>
+    </xs:sequence>
+     <xs:attribute name="id" type="xs:long" use="required"/>
+  </xs:complexType>
+</xs:schema>
