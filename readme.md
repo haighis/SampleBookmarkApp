@@ -9,6 +9,7 @@ Single Page Application using the following technologies:
 RESTful web service using the following technologies:
 
 - Google App Engine
+- Google App Engine Datastore
 - Objectify
 - JAX-RS
 - JAXB
