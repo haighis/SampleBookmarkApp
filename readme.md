@@ -13,3 +13,5 @@ RESTful web service using the following technologies:
 - Objectify
 - JAX-RS
 - JAXB
+
+Please note there is a Java version that contains the frontend SPA application with a restful web service. There is also a .NET version that uses the same frontend SPA application with a restful web service written in .NET Web API.
