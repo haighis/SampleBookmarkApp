@@ -12,9 +12,10 @@
     </header>
     <section class="view-list" data-bind="foreach: bookmarks">
         <article class="article-left-content">
-            <div class="project-brief" title="Go to bookmark details">
+            <div class="bookmark-brief" title="Go to bookmark details">
                 <h1 data-bind="text: title"></h1>
-                <address data-bind="text: title"></address>
+              
+                <address data-bind="text: description"></address>
             </div>
         </article>
     </section>

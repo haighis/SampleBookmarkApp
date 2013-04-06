@@ -1,92 +1,62 @@
-﻿define(['services/logger', 'durandal/system', 'services/model'],
-    function (logger, system, model) {
-
-	 var options = {
-             url: '/rest/bookmarks',
-             type: 'GET',
-             dataType: 'json'
-         };
-	
+﻿define(['config','services/logger', 'durandal/system', 'services/model'],
+    function (config,logger, system, model) {
+      
         var getBookmarksPartials = function (bookmarksObservable) {
             // reset the observable
             bookmarksObservable([]);
 
             // set ajax call
-           
+            var options = {
+                url: config.remoteServiceName,
+                type: 'GET',
+                dataType: 'json'
+            };
 
             // make call
             return $.ajax(options)
                 .then(querySucceeded)
                 .fail(queryFailed);
 
-            // handle the ajax callback
+            // handle the callback
             function querySucceeded(data) {
                 var bookmarks = [];
-                // data.sort(sortSpeakers);
-                
-             // JAX-RS serializes an empty list as null, and a 'collection of one' as an object (not an 'array of one')
-            	var list = data.bookmark == null ? [] : (data.bookmark instanceof Array ? data.bookmark : [data.bookmark]);
 
-            	//$('#wineList li').remove();
-            	$.each(list, function(index, item) {
-            		var s = new model.BookmarksPartial(item);
-                    bookmarks.push(s);
-            		//var bookmarkitem = item.title;
-            	});
-                
-                
-                
-                //data.bookmark.forEach(function (item) {
-                    //var s = new model.BookmarksPartial(item);
-                    //bookmarks.push(s);
-                //});
+                    var list = data.bookmark == null ? [] : (data.bookmark instanceof Array ? data.bookmark : [data.bookmark]);
+                    $.each(list, function (index, item) {
+                        var s = new model.BookmarksPartial(item);
+                        bookmarks.push(s);
+                    });
                 
                 bookmarksObservable(bookmarks);
-                
-                log('Retrieved bookmarks partials from remote data source',               		bookmarks,                    true);
+                log('Retrieved bookmarks partials from remote data source',bookmarks,true);
             }
         };
 
-        var getBookmarkById = function (bookmarkId, bookmarkObservable) {
-            // reset the observable
-            bookmarkObservable([]);
+        var getBookmarkById = function (id, bookmarkObservable) {
+            //var bookmark;
+            // set ajax call
+            var options = {
+                url: config.remoteServiceName + id,
+                type: 'GET',
+                dataType: 'json'
+            };
 
             // make call
             return $.ajax(options)
                 .then(querySucceeded)
                 .fail(queryFailed);
-
-            // handle the ajax callback
+            
+            // handle the callback
             function querySucceeded(data) {
-                var bookmark = [];
-                // data.sort(sortSpeakers);
-                
-             // JAX-RS serializes an empty list as null, and a 'collection of one' as an object (not an 'array of one')
-            	var list = data.bookmark == null ? [] : (data.bookmark instanceof Array ? data.bookmark : [data.bookmark]);
-
-            	//$('#wineList li').remove();
-            	$.each(list, function(index, item) {
-            		var s = new model.BookmarksPartial(item);
-                    bookmarks.push(s);
-            		//var bookmarkitem = item.title;
-            	});
-                
-                
-                
-                //data.bookmark.forEach(function (item) {
-                    //var s = new model.BookmarksPartial(item);
-                    //bookmarks.push(s);
-                //});
-                
-                bookmarksObservable(bookmarks);
-                
-                log('Retrieved bookmark by id from remote data source',               		bookmarks,                    true);
+                var bookmarkItem = new model.Bookmark(data);
+                    bookmarkObservable(bookmarkItem);
+                log('Retrieved bookmark item from remote data source', bookmarkItem, true);
             }
         };
-        
+
         var dataservice = {
             getBookmarksPartials: getBookmarksPartials,
-            getBookmarkById:getBookmarkById
+            getBookmarkById: getBookmarkById
         };
         return dataservice;
 
@@ -114,3 +84,19 @@
         //#endregion
 
     });
+
+//------------------------------------
+// Traditional Ajax call
+//------------------------------------
+
+// set ajax call
+//var options = {
+//    url: 'http://localhost:13763/api/bookmark',
+//    type: 'GET',
+//    dataType: 'json'
+//};
+
+// make call
+//return $.ajax(options)
+//    .then(querySucceeded)
+//    .fail(queryFailed);

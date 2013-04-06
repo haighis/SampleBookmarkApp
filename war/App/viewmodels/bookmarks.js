@@ -7,39 +7,39 @@
     };
 
     //var refresh = function () {
-    //    return datacontext.getBookmarksPartials(issues, true);
+    //    return dataservice.getBookmarksPartials(issues, true);
     //};
 
-    var issueadd = function () {
-        router.navigateTo('#/issueadd');
+    var bookmarkadd = function () {
+        router.navigateTo('#/bookmarkadd');
     };
 
-    //var gotoDetails = function (selectedIssue) {
-    //    if (selectedIssue && selectedIssue.id()) {
-    //        var url = '#/issuedetail/' + selectedIssue.id();
-    //        router.navigateTo(url);
-    //    }
-    //};
+    var gotoDetails = function (selectedIssue) {
+        if (selectedIssue && selectedIssue.id()) {
+            var url = '#/bookmarkdetail/' + selectedIssue.id();
+            router.navigateTo(url);
+        }
+    };
 
-    //var viewAttached = function (view) {
-    //    bindEventToList(view, '.issue-brief', gotoDetails);
-    //};
+    var viewAttached = function (view) {
+        bindEventToList(view, '.bookmark-brief', gotoDetails);
+    };
 
-    //var bindEventToList = function (rootSelector, selector, callback, eventName) {
-    //    var eName = eventName || 'click';
-    //    $(rootSelector).on(eName, selector, function () {
-    //        var issue = ko.dataFor(this);
-    //        callback(issue);
-    //        return false;
-    //    });
-    //};
+    var bindEventToList = function (rootSelector, selector, callback, eventName) {
+        var eName = eventName || 'click';
+        $(rootSelector).on(eName, selector, function () {
+            var issue = ko.dataFor(this);
+            callback(issue);
+            return false;
+        });
+    };
 
     var vm = {
         activate: activate,
         bookmarks: bookmarks,
         title: 'Bookmarks',
-        //viewAttached: viewAttached,
-        issueadd: issueadd//,
+        viewAttached: viewAttached,
+        bookmarkadd: bookmarkadd//,
         //refresh: refresh
     };
 

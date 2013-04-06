@@ -6,8 +6,20 @@
         return mapToObservable(dto);
     };
 
-    var model = {
-        BookmarksPartial: BookmarksPartial
+    var Bookmark = function (dto) {
+        return mapToObservable(dto);
+        //var self = this;
+        //self.id = ko.observable();
+        //self.title = ko.observable();
+        //self.url = ko.observable();
+        //self.description = ko.observable();
+        //return self;
+    };
+
+    var model =
+    {
+        BookmarksPartial: BookmarksPartial,
+        Bookmark: Bookmark
     };
 
     return model;

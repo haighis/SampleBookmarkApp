@@ -2,11 +2,14 @@
     toastr.options.timeOut = 4000;
     toastr.options.positionClass = 'toast-bottom-right';
 
-    var remoteServiceName = 'api/Breeze';
-
+    var remoteServiceName = 'http://bookyrestful.appspot.com/rest/bookmarks/';
+    var isJavaWebService = true;
     var routes =
     [
-       
+    
+     //---------------------------------------
+     //Bookmark Listing   
+     //---------------------------------------
     {
         url: 'bookmarks',
         moduleId: 'viewmodels/bookmarks',
@@ -14,6 +17,30 @@
         visible: true,
         caption: '<i class="icon-book"></i> Bookmarks'
     }
+    
+     ,
+     //---------------------------------------
+     //Edit Bookmark/Bookmark Detail   
+     //---------------------------------------   
+     {
+         url: 'bookmarkdetail/:id',
+         moduleId: 'viewmodels/bookmarkdetail',
+         name: 'Edit Bookmark',
+         visible: false
+     }
+
+     //---------------------------------------
+     //Add Bookmark   
+     //---------------------------------------   
+
+    //,
+    //{
+    //    url: 'bookmarkadd',
+    //    moduleId: 'viewmodels/bookmarkadd',
+    //    name: 'Add Bookmark',
+    //    visible: false,
+    //    caption: 'Add Bookmark'
+    //}
    
     ];
     

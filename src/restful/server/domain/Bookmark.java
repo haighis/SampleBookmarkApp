@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name="bookmark")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Bookmark", propOrder = {
-    "url", "title", "description"
+   "id", "url", "title", "description"
 })
 public class Bookmark {
 
@@ -54,7 +54,7 @@ public class Bookmark {
     protected String description;
     
     @Id
-    @XmlAttribute(required = true)
+    @XmlElement(required = true)
     protected long id;
 
     /**
@@ -118,6 +118,4 @@ public class Bookmark {
 	public String toString() {
 		return "Bookmark [id=" + id + ", title=" + title + ", url=" + url +   "]";
 	}
-
-    
 }
