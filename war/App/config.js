@@ -2,7 +2,12 @@
     toastr.options.timeOut = 4000;
     toastr.options.positionClass = 'toast-bottom-right';
 
+    //Production server
     var remoteServiceName = 'http://bookyrestful.appspot.com/rest/bookmarks/';
+    
+    //Dev server
+    //var remoteServiceName = 'http://localhost:8888/rest/bookmarks/';
+    
     var isJavaWebService = true;
     var routes =
     [
@@ -33,14 +38,14 @@
      //Add Bookmark   
      //---------------------------------------   
 
-    //,
-    //{
-    //    url: 'bookmarkadd',
-    //    moduleId: 'viewmodels/bookmarkadd',
-    //    name: 'Add Bookmark',
-    //    visible: false,
-    //    caption: 'Add Bookmark'
-    //}
+    ,
+    {
+        url: 'bookmarkadd',
+        moduleId: 'viewmodels/bookmarkadd',
+        name: 'Add Bookmark',
+        visible: false,
+        caption: 'Add Bookmark'
+    }
    
     ];
     

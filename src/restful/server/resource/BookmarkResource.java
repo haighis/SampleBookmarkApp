@@ -66,7 +66,7 @@ public class BookmarkResource {
 	
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public Response post(Bookmark bookmark, @Context UriInfo uriInfo) {
+	public Bookmark /**Response**/ post(Bookmark bookmark, @Context UriInfo uriInfo) {
 		logger.info("requested uri: "+uriInfo.getAbsolutePath());
 		logger.info("received bookmark: "+bookmark.toString());
 		Bookmark newBookmark = null;
@@ -75,13 +75,14 @@ public class BookmarkResource {
 		}
 		
 		newBookmark = new Bookmark();
-		newBookmark.setId(bookmarkDao.countAll()+1);
+		newBookmark.setId(bookmarkDao.countAll()+100);
 		newBookmark.setTitle(bookmark.getTitle());
 		newBookmark.setUrl(bookmark.getUrl());
 		newBookmark.setDescription(bookmark.getDescription());
 		logger.info("persist new bookmark: "+newBookmark.toString());
 		bookmarkDao.put(newBookmark);
-		return Response.created(URI.create("/bookmarks/" + newBookmark.getId())).build();		
+		//return Response.created(URI.create("/bookmarks/" + newBookmark.getId())).build();
+		return newBookmark;
 	}
 	
 	@PUT
