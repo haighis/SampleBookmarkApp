@@ -55,7 +55,7 @@ public class Bookmark {
     
     @Id
     @XmlElement(required = true)
-    protected long id;
+    protected Long id;
 
     /**
      * Gets the value of the title property.

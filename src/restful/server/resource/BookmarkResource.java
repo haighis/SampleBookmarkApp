@@ -35,7 +35,7 @@ public class BookmarkResource {
 	
 	@GET
 	@Path("{id}")
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_JSON})
 	public Bookmark get(@PathParam("id") long id, @Context UriInfo uriInfo) {
 		logger.info("requested uri: "+uriInfo.getAbsolutePath());
 		Bookmark retrievedBookmark = null;
@@ -51,7 +51,7 @@ public class BookmarkResource {
 	}
 	
 	@GET
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_JSON})
 	public List<Bookmark> get(@Context UriInfo uriInfo) {
 		logger.info("requested uri: "+uriInfo.getAbsolutePath());
 		List<Bookmark> bookmarkList;
@@ -65,29 +65,29 @@ public class BookmarkResource {
 	}
 	
 	@POST
-	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Consumes({MediaType.APPLICATION_JSON})
 	public Bookmark /**Response**/ post(Bookmark bookmark, @Context UriInfo uriInfo) {
 		logger.info("requested uri: "+uriInfo.getAbsolutePath());
 		logger.info("received bookmark: "+bookmark.toString());
 		Bookmark newBookmark = null;
-		if(bookmarkDao.getByField("title", bookmark.getTitle()).iterator().hasNext()) {
-			throw new WebApplicationException(Response.Status.CONFLICT);
-		}
+		//if(bookmarkDao.getByField("title", bookmark.getTitle()).iterator().hasNext()) {
+		//	throw new WebApplicationException(Response.Status.CONFLICT);
+		//}
 		
 		newBookmark = new Bookmark();
-		newBookmark.setId(bookmarkDao.countAll()+100);
+		//newBookmark.setId(bookmarkDao.countAll()+112121);
 		newBookmark.setTitle(bookmark.getTitle());
 		newBookmark.setUrl(bookmark.getUrl());
 		newBookmark.setDescription(bookmark.getDescription());
 		logger.info("persist new bookmark: "+newBookmark.toString());
 		bookmarkDao.put(newBookmark);
-		//return Response.created(URI.create("/bookmarks/" + newBookmark.getId())).build();
+		//return Response.created(URI.create("/bookmarks/" + newBookmark.getId())).header("Access-Control-Allow-Origin", "*").build();
 		return newBookmark;
 	}
 	
 	@PUT
 	@Path("{id}")
-	@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Consumes({MediaType.APPLICATION_JSON})
 	public Response put(@PathParam("id") long id, Bookmark bookmark, @Context UriInfo uriInfo) {
 		logger.info("requested uri: "+uriInfo.getAbsolutePath());
 		Bookmark retrievedBookmark = null;

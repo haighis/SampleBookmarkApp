@@ -1,10 +1,6 @@
-Booky is a single page application that will allow to manage share and find bookmarks. (Java version)
+Booky is a single page application that will allow to manage share and find bookmarks. (Java version).
 
-Single Page Application using the following technologies:
-- Durandal
-- Knockout
-- RequireJS
-- Q
+This project has been change where the frontend SPA application has been moved to it's own repository on github. This project now contains only the restful backend.
 
 RESTful web service using the following technologies:
 
@@ -14,6 +10,6 @@ RESTful web service using the following technologies:
 - JAX-RS
 - JAXB
 
-This is the Java version that contains the frontend SPA application with a restful web service. There is also a .NET version that uses the same frontend SPA application with a restful web service written in .NET Web API with Entity Framework Code First and SqlCE database.
+There is also a .NET version that uses the same frontend SPA application with a restful web service written in .NET Web API with Entity Framework Code First and SqlCE database.
 
 .NET Version - https://github.com/haighis/BookyNET

@@ -12,14 +12,39 @@
 <init-param>
   <param-name>javax.ws.rs.Application</param-name>
   <param-value>restful.server.RestfulApplication</param-value>
+  
 </init-param>
+<init-param>
+    <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
+    <param-value>restful.server.web.security.ResponseCorsFilter</param-value>
+</init-param> 
+ 
   <load-on-startup>1</load-on-startup>
 </servlet>
 <servlet-mapping>
   <servlet-name>Jersey REST Service</servlet-name>
   <url-pattern>/rest/*</url-pattern>
 </servlet-mapping>
-  
+  <!-- 
+<security-constraint>
+     <web-resource-collection>
+         <url-pattern>/rest/*</url-pattern>
+     </web-resource-collection>
+     <auth-constraint>
+         <role-name>*</role-name>
+     </auth-constraint>
+ </security-constraint>
+
+ <security-constraint>
+     <web-resource-collection>
+         <url-pattern>/*</url-pattern>
+     </web-resource-collection>
+     <auth-constraint>
+         <role-name>admin</role-name>
+     </auth-constraint>
+ </security-constraint>-->
+
+
  <servlet>
   <servlet-name>SystemServiceServlet</servlet-name>
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>

@@ -20,6 +20,7 @@ public class RestfulApplication extends Application{
 
 	public RestfulApplication() {
 		
+		/*
 		CategoryDao categoryDao = new CategoryDao();
 		//if(categoryDao.countAll() <= 0) {
 			Category category = null;
@@ -43,21 +44,12 @@ public class RestfulApplication extends Application{
 					b.setUrl("http://" + i + ".com");
 					bookmarkDao.put(b);
 				}	
-			
+		*/
+		
 		singletons.add(new HelloResource());
 		singletons.add(new CategoryResource());
 		singletons.add(new BookmarkResource());
-		
 	}
-	
-	/*
-    public Set<Class<?>> getClasses() {
-        Set<Class<?>> resourceSet = new HashSet<Class<?>>();
-        resourceSet.add(HelloResource.class);
-        //resourceSet.add(CategoryResource.class);
-        return resourceSet;
-    }
-    */
     
     @Override
     public Set<Class<?>> getClasses() {
@@ -68,5 +60,4 @@ public class RestfulApplication extends Application{
     public Set<Object> getSingletons() {
     	return singletons;
     }
-    
 }
