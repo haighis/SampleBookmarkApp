@@ -1,4 +1,4 @@
-Booky is a single page application that will allow to manage share and find bookmarks. (Java version).
+A single page application that will allow to manage share and find bookmarks. (Java version).
 
 This project has been change where the frontend SPA application has been moved to it's own repository on github. This project now contains only the restful backend.
 
